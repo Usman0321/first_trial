@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include('connection.php'); ?>
 
-
-<!-- portfolio.html  21 Nov 2019 03:50:12 GMT -->
+<!-- blog.html  21 Nov 2019 03:50:31 GMT -->
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <div class="loader"></div>
+  <!-- <div class="loader"></div> -->
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -194,20 +194,13 @@
               </ul>
             </li>
             <li class="dropdown active">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>SofticEra Task_management</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="chat.html">Chat</a></li>
-                <li class="active"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                <li><a class="nav-link" href="calendar.html">Calendar</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="email-inbox.html">Inbox</a></li>
-                <li><a class="nav-link" href="email-compose.html">Compose</a></li>
-                <li><a class="nav-link" href="email-read.html">read</a></li>
+                <li><a class="nav-link" href="add_user.php">Add User</a></li>
+                <li><a class="nav-link" href="add_task.php">Add Task</a></li>
+                <li><a class="nav-link" href="pending_tasks.php">Pending Tasks</a></li>
+                <li><a class="nav-link" href="in_process_tasks.php">In Process Tasks</a></li>
+                <li><a class="nav-link" href="completed_tasks.php">Completed Tasks</a></li>
               </ul>
             </li>
             <li class="menu-header">UI Elements</li>
@@ -383,143 +376,63 @@
         </aside>
       </div>
       <!-- Main Content -->
+     
       <div class="main-content">
         <section class="section">
           <div class="section-body">
             <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="bootstrap snippet">
-                      <section id="portfolio" class="gray-bg padding-top-bottom">
-                        <!--==== Portfolio Filters ====-->
-                        <div class="categories">
-                          <ul>
-                            <li class="active">
-                              <a href="#" data-filter="*">All Categories</a>
-                            </li>
-                            <li>
-                              <a href="#" data-filter=".web-design">Web Design</a>
-                            </li>
-                            <li>
-                              <a href="#" data-filter=".apps">Apps</a>
-                            </li>
-                            <li>
-                              <a href="#" data-filter=".psd">PSD</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <!-- ======= Portfolio items ===-->
-                        <div class="projects-container scrollimation in">
-                          <div class="row">
-                            <article class="col-md-4 col-sm-6 portfolio-item web-design apps psd">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post4.png" alt="">
-                                  <span class="project-title">Title 1</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="enlarge cboxElement" href="#" title="Bills Project"><i
-                                    class="fa fa-expand fa-fw"></i></a>
-                                <a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-                              </div>
-                            </article>
-                            <article class="col-md-4 col-sm-6 portfolio-item apps">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post5.png" alt="">
-                                  <span class="project-title">Title 2</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="link centered" href="#"><i class="fa fa-eye fa-fw"></i></a>
-                              </div>
-                            </article>
-                            <article class="col-md-4 col-sm-6 portfolio-item web-design psd">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post6.png" alt="">
-                                  <span class="project-title">Title 3</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="enlarge centered cboxElement" href="#" title="Get Colored"><i
-                                    class="fa fa-expand fa-fw"></i></a>
-                              </div>
-                            </article>
-                            <article class="col-md-4 col-sm-6 portfolio-item apps">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post7.png" alt="">
-                                  <span class="project-title">Title 4</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="enlarge cboxElement" href="#" title="Holiday Selector"><i
-                                    class="fa fa-expand fa-fw"></i></a>
-                                <a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-                              </div>
-                            </article>
-                            <article class="col-md-4 col-sm-6 portfolio-item web-design psd">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post8.png" alt="">
-                                  <span class="project-title">Title 5</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="enlarge cboxElement" href="#" title="Scavenger Hunt"><i
-                                    class="fa fa-expand fa-fw"></i></a>
-                                <a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-                              </div>
-                            </article>
-                            <article class="col-md-4 col-sm-6 portfolio-item web-design apps">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post9.png" alt="">
-                                  <span class="project-title">Title 6</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="enlarge cboxElement" href="#" title="Sonor"><i
-                                    class="fa fa-expand fa-fw"></i></a>
-                                <a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-                              </div>
-                            </article>
-                            <article class="col-md-4 col-sm-6 portfolio-item web-design apps psd">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post11.png" alt="">
-                                  <span class="project-title">Title 7</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="enlarge cboxElement" href="#" title="Bills Project"><i
-                                    class="fa fa-expand fa-fw"></i></a>
-                                <a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-                              </div>
-                            </article>
-                            <article class="col-md-4 col-sm-6 portfolio-item apps">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post12.png" alt="">
-                                  <span class="project-title">Title 8</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="link centered" href="#"><i class="fa fa-eye fa-fw"></i></a>
-                              </div>
-                            </article>
-                            <article class="col-md-4 col-sm-6 portfolio-item web-design psd">
-                              <div class="portfolio-thumb in">
-                                <a href="#" class="main-link">
-                                  <img class="img-responsive img-center" src="assets/img/posts/post13.png" alt="">
-                                  <span class="project-title">Title 9</span>
-                                  <span class="overlay-mask"></span>
-                                </a>
-                                <a class="enlarge centered cboxElement" href="#" title="Get Colored"><i
-                                    class="fa fa-expand fa-fw"></i></a>
-                              </div>
-                            </article>
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </div>
-                </div>
+              <div class="col-12 table-responsive">
+                <table class="table">
+                  <tr>
+                    <th>user Name</th>
+                    <th>Task Name</th>
+                    <th>Assigh Date</th>
+                    <th>Time On Task </th>
+                    <th>Complete Date</th>
+                  </tr>
+                  <?php
+                      $query = mysqli_query($connection , "SELECT `at`.id,u.user_name,t.task,`at`.task AS at_task,`at`.task_assign_date FROM add_task `at` JOIN users u ON at.user = u.user_id JOIN tasks t ON at.task = t.id   WHERE `at`.task_status = 'completed'");
+                      while($query_arr = mysqli_fetch_assoc($query)){
+                  ?>
+                  <tr>
+                      <td><?= $query_arr['user_name']?></td>
+                      <td class="text-truncate"><?= $query_arr['task']?></td>
+                      <td> <?=$query_arr['task_assign_date']?></td>
+                      <?php
+                        $task_id = $query_arr['at_task'];
+                        $user = $query_arr['user_name'];
+                        $comp_query = mysqli_query($connection , "SELECT * FROM task_timing WHERE user = '$user' && task = '$task_id'");
+                        $fecth_arr = mysqli_fetch_assoc($comp_query);
+                      ?>
+                      <?php
+                        $pause =   $fecth_arr['pause'];
+                        $resume = $fecth_arr['resume'];
+                        $total_sec = $resume - $pause ;
+                        // $pause = explode("--" , $fecth_arr['pause']);
+                        // $resume = explode("--" , $fecth_arr['resume']);
+                        // $total_sec = 0;
+                        // for ($i = 1; $i < count($resume); $i++) {
+                        //   $pause_total = $pause[$i];
+                        //   $resume_total = $resume[$i];
+                        //   $total = $resume_total-$pause_total;
+                        //   $total_sec+=$total;
+                        // }
+                  ####### Optional trick for printing same index of two arrays with Foreach Loop ######        
+
+                        // foreach ($array1 as $key => $value) {
+                        //   echo $value . ' - ' . $array2[$key] . '<br>';
+                        // }
+
+                  ####### Ends there  ######        
+                        $total_mints = floor($total_sec/60);
+                        $total_hours = floor($total_mints/60);
+                        $total_time_on_task = ($total_hours .":Hours , " . $total_mints . ":mints ");
+                        ?>
+                      <td><?= $total_time_on_task?> </td>
+                      <td> <?=$fecth_arr['task_complete_time']?></td>
+                  </tr>
+                  <?php  } ?>
+                </table>
               </div>
             </div>
           </div>
@@ -629,13 +542,13 @@
   <script src="assets/js/app.min.js"></script>
   <!-- JS Libraies -->
   <!-- Page Specific JS File -->
-  <script src="assets/js/page/portfolio.js"></script>
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <!-- Custom JS File -->
+  <script src="assets/js/jquery.js"></script>
   <script src="assets/js/custom.js"></script>
 </body>
 
 
-<!-- portfolio.html  21 Nov 2019 03:50:31 GMT -->
+<!-- blog.html  21 Nov 2019 03:50:52 GMT -->
 </html>

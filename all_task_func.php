@@ -194,20 +194,12 @@
               </ul>
             </li>
             <li class="dropdown active">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>SofticEra Task_management</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="chat.html">Chat</a></li>
-                <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-                <li class="active"><a class="nav-link" href="blog.html">Blog</a></li>
-                <li><a class="nav-link" href="calendar.html">Calendar</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="email-inbox.html">Inbox</a></li>
-                <li><a class="nav-link" href="email-compose.html">Compose</a></li>
-                <li><a class="nav-link" href="email-read.html">read</a></li>
+                <li><a class="nav-link" href="add_user.php">Add User</a></li>
+                <li class="active"><a class="nav-link" href="add_task.php">Add Task</a></li>
+                <li class="active"><a class="nav-link" href="pending_tasks.php">Pending Tasks</a></li>
+                <li><a class="nav-link" href="in_process_tasks.php">In Process Tasks</a></li><li><a class="nav-link" href="completed_tasks.php">Completed Tasks</a></li>
               </ul>
             </li>
             <li class="menu-header">UI Elements</li>
@@ -383,243 +375,39 @@
         </aside>
       </div>
       <!-- Main Content -->
+     
       <div class="main-content">
         <section class="section">
           <div class="section-body">
             <div class="row">
-              <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                <article class="article">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img08.png">
-                    </div>
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs. </p>
-                    <div class="article-cta">
-                      <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                <article class="article">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img04.png">
-                    </div>
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-cta">
-                      <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                <article class="article">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img09.png">
-                    </div>
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-cta">
-                      <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                <article class="article">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img12.png">
-                    </div>
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-cta">
-                      <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <h2 class="section-title">Blog Style B</h2>
-            <div class="row">
-              <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                <article class="article article-style-b">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img10.png">
-                    </div>
-                    <div class="article-badge">
-                      <div class="article-badge-item bg-danger"><i class="fas fa-fire"></i> Trending</div>
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-cta">
-                      <a href="#">Read More <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                <article class="article article-style-b">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img15.png">
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-cta">
-                      <a href="#">Read More <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                <article class="article article-style-b">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img07.png">
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-cta">
-                      <a href="#">Read More <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                <article class="article article-style-b">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img02.png">
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-cta">
-                      <a href="#">Read More <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <h2 class="section-title">Blog Style C</h2>
-            <div class="row">
-              <div class="col-12 col-md-4 col-lg-4">
-                <article class="article article-style-c">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img13.png">
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <div class="article-category"><a href="#">News</a>
-                      <div class="bullet"></div> <a href="#">3 DAYS</a>
-                    </div>
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-user">
-                      <img alt="image" src="assets/img/users/user-1.png">
-                      <div class="article-user-details">
-                        <div class="user-detail-name">
-                          <a href="#">Sarah Smith</a>
-                        </div>
-                        <div class="text-job">Java Developer</div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-12 col-md-4 col-lg-4">
-                <article class="article article-style-c">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img14.png">
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <div class="article-category"><a href="#">News</a>
-                      <div class="bullet"></div> <a href="#">3 DAYS</a>
-                    </div>
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-user">
-                      <img alt="image" src="assets/img/users/user-3.png">
-                      <div class="article-user-details">
-                        <div class="user-detail-name">
-                          <a href="#">Airi Satou</a>
-                        </div>
-                        <div class="text-job">HR Manager</div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="col-12 col-md-4 col-lg-4">
-                <article class="article article-style-c">
-                  <div class="article-header">
-                    <div class="article-image" data-background="assets/img/blog/img01.png">
-                    </div>
-                  </div>
-                  <div class="article-details">
-                    <div class="article-category"><a href="#">News</a>
-                      <div class="bullet"></div> <a href="#">3 DAYS</a>
-                    </div>
-                    <div class="article-title">
-                      <h2><a href="#">The oddest place you will find photo studios</a></h2>
-                    </div>
-                    <p>A don't spirit gathered two under, lights said. May Multiply seasons you'll spirit tree morning
-                      hath first signs.</p>
-                    <div class="article-user">
-                      <img alt="image" src="assets/img/users/user-2.png">
-                      <div class="article-user-details">
-                        <div class="user-detail-name">
-                          <a href="#">Angelica Ramos</a>
-                        </div>
-                        <div class="text-job">Web Designer</div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
+              <div class="col-12 table-responsive">
+                <table class="table">
+                  <tr>
+                    <th>User Name</th>
+                    <th>Task Name</th>
+                    <th>Assigh Date</th>
+                    <th>Pause Task</th>
+                    <th>Resume Task</th>
+                    <th>Complete Task</th>
+                  </tr>
+                  <?php
+                      include("connection.php");
+                      if(isset($_GET['id'])){
+                      $task_id = $_GET['id'];
+                      $query = mysqli_query($connection , "SELECT * FROM add_task `at` JOIN users u ON at.user = u.user_id JOIN tasks t ON at.task = t.id WHERE at.id='$task_id'");  
+                    }
+                      while($query_arr = mysqli_fetch_assoc($query)){
+                  ?>
+                  <tr>
+                    <td><?= $query_arr['user_name']?></td>
+                    <td class="text-truncate">
+                      <?= $query_arr['task']?>
+                    </td>
+                    <td><?= $query_arr['task_start_time']?></td>
+                    <td><a href="pending_tasks.php?complete" name="complete" class="btn btn-success">Complete</a></td>
+                  </tr>
+                  <?php  } //}?>
+                </table>
               </div>
             </div>
           </div>

@@ -6,4 +6,14 @@
  */
 
 "use strict";
+$(document).ready(function () {
+    var clas = $('.dropdown-menu .nav-link');
+    $(clas).click(function (e) { 
+        $(clas).addClass('.active-link');
+    });;
+});
+
+var doc = "sdsadasdsad";
+console.log(doc);
+
 

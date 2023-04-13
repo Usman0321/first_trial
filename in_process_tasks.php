@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include('connection.php'); ?>
 
-
-<!-- calendar.html  21 Nov 2019 03:50:52 GMT -->
+<!-- blog.html  21 Nov 2019 03:50:31 GMT -->
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Otika - Admin Dashboard Template</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" href="assets/css/app.min.css">
-  <link rel="stylesheet" href="assets/bundles/fullcalendar/fullcalendar.min.css">
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -19,7 +18,7 @@
 </head>
 
 <body>
-  <div class="loader"></div>
+  <!-- <div class="loader"></div> -->
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -195,20 +194,13 @@
               </ul>
             </li>
             <li class="dropdown active">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>SofticEra Task_management</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="chat.html">Chat</a></li>
-                <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                <li class="active"><a class="nav-link" href="calendar.html">Calendar</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="email-inbox.html">Inbox</a></li>
-                <li><a class="nav-link" href="email-compose.html">Compose</a></li>
-                <li><a class="nav-link" href="email-read.html">read</a></li>
+                <li><a class="nav-link" href="add_user.php">Add User</a></li>
+                <li><a class="nav-link" href="add_task.php">Add Task</a></li>
+                <li><a class="nav-link" href="pending_tasks.php">Pending Tasks</a></li>
+                <li><a class="nav-link" href="in_process_tasks.php">In Process Tasks</a></li>
+                <li><a class="nav-link" href="completed_tasks.php">Completed Tasks</a></li>
               </ul>
             </li>
             <li class="menu-header">UI Elements</li>
@@ -383,22 +375,85 @@
           </ul>
         </aside>
       </div>
+    <?php
+      
+      if(isset($_GET['pause_id'])){
+        $pause_id = $_GET['pause_id'];
+        date_default_timezone_set("Asia/Karachi");  
+        $pause_time = time();            
+        $select_query = mysqli_query($connection , "SELECT `at`.id,`at`.user,`at`.task_status,u.user_name,`at`.task AS at_task,t.task,`at`.task_assign_date,tt.pause,tt.resume  FROM add_task `at` JOIN users u ON `at`.user = u.user_id JOIN tasks t ON at.task = t.id JOIN task_timing tt ON (at.task = tt.task && u.user_name = tt.user) WHERE `at`.id = '$pause_id'");
+        $fecth_arr = mysqli_fetch_assoc($select_query);
+        $user = $fecth_arr['user_name'];
+        $task = $fecth_arr['at_task'];
+        $old_pause_time = $fecth_arr['pause'];
+        $update_pause_time = ($old_pause_time . "--" . $pause_time);
+        $update_query = mysqli_query($connection , "UPDATE add_task SET task_status = 'paused' WHERE id = '$pause_id'");
+        $pause_record = mysqli_query($connection , "UPDATE task_timing SET `pause` = '$pause_time' WHERE (user = '$user' && task='$task') ");
+      }
+        if(isset($_GET['resume_id'])){
+        $resume_id = $_GET['resume_id'];
+        $update_query = mysqli_query($connection , "UPDATE add_task SET task_status = 'in process' WHERE id = '$resume_id'");
+        date_default_timezone_set("Asia/Karachi");  
+        $resume_time = time();            
+        $select_query = mysqli_query($connection , "SELECT `at`.id,`at`.user,`at`.task_status,u.user_name,`at`.task AS at_task,t.task,`at`.task_assign_date,tt.pause,tt.resume  FROM add_task `at` JOIN users u ON `at`.user = u.user_id JOIN tasks t ON at.task = t.id JOIN task_timing tt ON (at.task = tt.task && u.user_name = tt.user) WHERE `at`.id = '$resume_id'");
+        $fecth_arr = mysqli_fetch_assoc($select_query);
+        $user = $fecth_arr['user_name'];
+        $task = $fecth_arr['at_task'];
+        $old_resume_time = $fecth_arr['resume'];
+        $update_resume_time = ($old_resume_time . "--" . $resume_time);
+        $resume_record = mysqli_query($connection , "UPDATE task_timing SET `resume` = '$resume_time' WHERE (user = '$user' && task='$task') ");
+      }
+      if(isset($_GET['complete_id'])){
+        $complete_id = $_GET['complete_id'];
+        $update_query = mysqli_query($connection , "UPDATE add_task SET task_status = 'completed' WHERE id = '$complete_id'");
+        date_default_timezone_set("Asia/Karachi");  
+        $complete_time =  date("h:ia" . " (d-M-Y)");            
+        $select_query = mysqli_query($connection , "SELECT `at`.id,`at`.user,`at`.task_status,u.user_name,`at`.task AS at_task,t.task,`at`.task_assign_date,`at`.`description`  FROM add_task `at` JOIN users u ON `at`.user = u.user_id JOIN tasks t ON at.task = t.id WHERE `at`.id = '$complete_id'");
+        $fecth_arr = mysqli_fetch_assoc($select_query);
+        $user = $fecth_arr['user_name'];
+        $task = $fecth_arr['at_task'];
+        $resume_record = mysqli_query($connection , "UPDATE task_timing SET `task_complete_time` = '$complete_time' WHERE (user = '$user' && task='$task') ");
+      }
+  ?>
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-body">
             <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Calendar</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="fc-overflow">
-                      <div id="myEvent"></div>
-                    </div>
-                  </div>
-                </div>
+              <div class="col-12 table-responsive">
+                <table class="table">
+                  <tr>
+                    <th>Id</th>
+                    <th>User Name</th>
+                    <th>Task Name</th>
+                    <th>Assigh Date</th>
+                    <th>Pause Task</th>       
+                    <th>Resume Task</th>
+                    <th>Complete Task</th>
+                  </tr>
+                  <?php
+                    $select_query = mysqli_query($connection , "SELECT `at`.id,`at`.user,`at`.task_status,u.user_name,`at`.task AS at_task,t.task,`at`.task_assign_date,`at`.`description`  FROM add_task `at` JOIN users u ON `at`.user = u.user_id JOIN tasks t ON at.task = t.id WHERE (`at`.task_status != 'pending'  && `at`.task_status != 'completed')");
+                    while($query_arr = mysqli_fetch_assoc($select_query)){
+                  ?>
+                  <tr>
+                      <td><?= $query_arr['id']?></td>
+                      <td><?= $query_arr['user_name']?></td>
+                      <td class="text-truncate"><?= $query_arr['task']?></td>
+                      <td> <?=$query_arr['task_assign_date']?></td>
+                      <?php
+                        if($query_arr['task_status'] == 'in process'){
+                          ?><td><a href="in_process_tasks.php?pause_id=<?=$query_arr['id']?>" name="start" class="btn btn-warning">Pause Task</a></td><?php    
+                          ?><td><div class="btn bg-light">Task is In Process</div></td><?php    
+                        }
+                        if($query_arr['task_status'] == 'paused'){
+                          ?><td><div class="btn bg-light">Task Paused</div></td><?php    
+                          ?><td><a href="in_process_tasks.php?resume_id=<?=$query_arr['id']?>" name="start" class="btn btn-info">Resume Task</a></td><?php    
+                        }
+                      ?>
+                      <td><a href="in_process_tasks.php?complete_id=<?=$query_arr['id']?>" name="start" class="btn btn-success">Complete Task</a></td>
+                   </tr>
+                  <?php   } ?>
+                </table>
               </div>
             </div>
           </div>
@@ -507,15 +562,14 @@
   <!-- General JS Scripts -->
   <script src="assets/js/app.min.js"></script>
   <!-- JS Libraies -->
-  <script src="assets/bundles/fullcalendar/fullcalendar.min.js"></script>
   <!-- Page Specific JS File -->
-  <script src="assets/js/page/calendar.js"></script>
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <!-- Custom JS File -->
+  <script src="assets/js/jquery.js"></script>
   <script src="assets/js/custom.js"></script>
 </body>
 
 
-<!-- calendar.html  21 Nov 2019 03:50:57 GMT -->
+<!-- blog.html  21 Nov 2019 03:50:52 GMT -->
 </html>

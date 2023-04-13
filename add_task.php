@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+    include('connection.php');
+    if(isset($_POST['start_task'])){
+      
+      $user_name = mysqli_real_escape_string($connection, $_POST['user_name']);
+      $task = mysqli_real_escape_string($connection, $_POST['task']);
+      $task_description = mysqli_real_escape_string($connection, $_POST['task_description']);
+      date_default_timezone_set("Asia/Karachi");
+      $time =  date("(d-M-Y)");
+          $task_assign_date = mysqli_real_escape_string($connection, $time);
+          $query = mysqli_query($connection , "INSERT INTO add_task( user , task , `description` , task_assign_date , task_status  ) VALUES ('$user_name' , '$task' , '$task_description' , '$task_assign_date' , 'pending' )"); 
+    }
 
+?>
 
-<!-- email-inbox.html  21 Nov 2019 03:50:57 GMT -->
+<!-- portfolio.html  21 Nov 2019 03:50:12 GMT -->
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -193,21 +206,14 @@
                 <li><a class="nav-link" href="widget-data.html">Data Widgets</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="chat.html">Chat</a></li>
-                <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                <li><a class="nav-link" href="calendar.html">Calendar</a></li>
-              </ul>
-            </li>
             <li class="dropdown active">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>SofticEra Task_management</span></a>
               <ul class="dropdown-menu">
-                <li class="active"><a class="nav-link" href="email-inbox.html">Inbox</a></li>
-                <li><a class="nav-link" href="email-compose.html">Compose</a></li>
-                <li><a class="nav-link" href="email-read.html">read</a></li>
+                <li><a class="nav-link" href="add_user.php">Add User</a></li>
+                <li><a class="nav-link" href="add_task.php">Add Task</a></li>
+                <li><a class="nav-link" href="pending_tasks.php">Pending Tasks</a></li>
+                <li><a class="nav-link" href="in_process_tasks.php">In Process Tasks</a></li>
+                <li><a class="nav-link" href="completed_tasks.php">Completed Tasks</a></li>
               </ul>
             </li>
             <li class="menu-header">UI Elements</li>
@@ -384,405 +390,64 @@
       </div>
       <!-- Main Content -->
       <div class="main-content">
-        <section class="section">
-          <div class="section-body">
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                <div class="card">
-                  <div class="body">
-                    <div id="mail-nav">
-                      <button type="button" class="btn btn-danger waves-effect btn-compose m-b-15">COMPOSE</button>
-                      <ul class="" id="mail-folders">
-                        <li class="active">
-                          <a href="mail-inbox.html" title="Inbox">Inbox (10)
-                          </a>
-                        </li>
-                        <li>
-                          <a href="javascript:;" title="Sent">Sent</a>
-                        </li>
-                        <li>
-                          <a href="javascript:;" title="Draft">Draft</a>
-                        </li>
-                        <li>
-                          <a href="javascript:;" title="Bin">Bin</a>
-                        </li>
-                        <li>
-                          <a href="javascript:;" title="Important">Important</a>
-                        </li>
-                        <li>
-                          <a href="javascript:;" title="Starred">Starred</a>
-                        </li>
-                      </ul>
-                      <h5 class="b-b p-10 text-strong">Labels</h5>
-                      <ul class="" id="mail-labels">
-                        <li>
-                          <a href="javascript:;">
-                            <i class="material-icons col-red">local_offer</i>Family</a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
-                            <i class="material-icons col-blue">local_offer</i>Work</a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
-                            <i class="material-icons col-orange">local_offer</i>Shop</a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
-                            <i class="material-icons col-cyan">local_offer</i>Themeforest</a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
-                            <i class="material-icons col-blue-grey">local_offer</i>Google</a>
-                        </li>
-                      </ul>
-                      <h5 class="b-b p-10 text-strong">Online</h5>
-                      <ul class="online-user" id="online-offline">
-                        <li><a href="javascript:;"> <img alt="image" src="assets/img/users/user-2.png"
-                              class="rounded-circle" width="35" data-toggle="tooltip" title="Sachin Pandit">
-                            Sachin Pandit
-                          </a></li>
-                        <li><a href="javascript:;"> <img alt="image" src="assets/img/users/user-1.png"
-                              class="rounded-circle" width="35" data-toggle="tooltip" title="Sarah Smith">
-                            Sarah Smith
-                          </a></li>
-                        <li><a href="javascript:;"> <img alt="image" src="assets/img/users/user-3.png"
-                              class="rounded-circle" width="35" data-toggle="tooltip" title="Airi Satou">
-                            Airi Satou
-                          </a></li>
-                        <li><a href="javascript:;"> <img alt="image" src="assets/img/users/user-4.png"
-                              class="rounded-circle" width="35" data-toggle="tooltip" title="Angelica Ramos	">
-                            Angelica Ramos
-                          </a></li>
-                        <li><a href="javascript:;"> <img alt="image" src="assets/img/users/user-5.png"
-                              class="rounded-circle" width="35" data-toggle="tooltip" title="Cara Stevens">
-                            Cara Stevens
-                          </a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+      <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h4>Add Task</h4>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                <div class="card">
-                  <div class="boxs mail_listing">
-                    <div class="inbox-center table-responsive">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th class="text-center">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </th>
-                            <th colspan="3">
-                              <div class="inbox-header">
-                                <div class="mail-option">
-                                  <div class="email-btn-group m-l-15">
-                                    <a href="#" class="col-dark-gray waves-effect m-r-20" title="back"
-                                      data-toggle="tooltip">
-                                      <i class="material-icons">keyboard_return</i>
-                                    </a>
-                                    <a href="#" class="col-dark-gray waves-effect m-r-20" title="Archive"
-                                      data-toggle="tooltip">
-                                      <i class="material-icons">archive</i>
-                                    </a>
-                                    <div class="p-r-20">|</div>
-                                    <a href="#" class="col-dark-gray waves-effect m-r-20" title="Error"
-                                      data-toggle="tooltip">
-                                      <i class="material-icons">error</i>
-                                    </a>
-                                    <a href="#" class="col-dark-gray waves-effect m-r-20" title="Delete"
-                                      data-toggle="tooltip">
-                                      <i class="material-icons">delete</i>
-                                    </a>
-                                    <a href="#" class="col-dark-gray waves-effect m-r-20" title="Folders"
-                                      data-toggle="tooltip">
-                                      <i class="material-icons">folder</i>
-                                    </a>
-                                    <a href="#" class="col-dark-gray waves-effect m-r-20" title="Tag"
-                                      data-toggle="tooltip">
-                                      <i class="material-icons">local_offer</i>
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                            </th>
-                            <th class="hidden-xs" colspan="2">
-                              <div class="pull-right">
-                                <div class="email-btn-group m-l-15">
-                                  <a href="#" class="col-dark-gray waves-effect m-r-20" title="previous"
-                                    data-toggle="tooltip">
-                                    <i class="material-icons">navigate_before</i>
-                                  </a>
-                                  <a href="#" class="col-dark-gray waves-effect m-r-20" title="next"
-                                    data-toggle="tooltip">
-                                    <i class="material-icons">navigate_next</i>
-                                  </a>
-                                </div>
-                              </div>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="unread">
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Nelson Lane</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                <span class="badge badge-primary">Work</span>
-                                Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> 12:30 PM </td>
-                          </tr>
-                          <tr class="unread">
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons text-warning">star</i>
-                            </td>
-                            <td class="hidden-xs">Kerry Mann</td>
-                            <td class="max-texts">
-                              <a href="#">Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 13 </td>
-                          </tr>
-                          <tr class="unread">
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Adam Peters</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                <span class="badge badge-secondary">Shopping</span>
-                                Lorem ipsum perspiciatis unde omnis</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 12 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Lula Reese</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                <span class="badge badge-success">Family</span>
-                                Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 12 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Nelson Lane</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 12 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons text-warning">star</i>
-                            </td>
-                            <td class="hidden-xs">Kerry Mann</td>
-                            <td class="max-texts">
-                              <a href="#">Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 11 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Adam Peters</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                <span class="badge badge-info">Office</span>
-                                Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 11 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Lula Reese</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 11 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Nelson Lane</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                <span class="badge badge-danger">Work</span>
-                                Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 10 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons text-warning">star</i>
-                            </td>
-                            <td class="hidden-xs">Kerry Mann</td>
-                            <td class="max-texts">
-                              <a href="#">Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 10 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Adam Peters</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                <span class="badge badge-secondary">Shopping</span>
-                                Lorem ipsum perspiciatis unde omnis</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 10 </td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-checkbox">
-                              <label class="form-check-label">
-                                <input type="checkbox">
-                                <span class="form-check-sign"></span>
-                              </label>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">star_border</i>
-                            </td>
-                            <td class="hidden-xs">Lula Reese</td>
-                            <td class="max-texts">
-                              <a href="#">
-                                Lorem ipsum perspiciatis unde omnis iste natus</a>
-                            </td>
-                            <td class="hidden-xs">
-                              <i class="material-icons">attach_file</i>
-                            </td>
-                            <td class="text-right"> May 09 </td>
-                          </tr>
-                        </tbody>
-                      </table>
+              <div class="card-body">
+                <form action="" id="myForm"  enctype="multipart/form-data"  method="POST">
+                  <div class="row">
+                    <div class="form-group col-12 col-md-10 mx-auto">
+                      <label for="user_name">User Name</label>
+                      <select style="color:gray;" class="form-control" name="user_name" id="user_name">
+                          <option  value="" selected disabled>SELECT USER</option>
+                        <?php
+                          $select = mysqli_query($connection , "SELECT * FROM users");
+                          while ($select_arr = mysqli_fetch_assoc($select)) {
+                            ?><option value="<?= $select_arr['user_id']?>"><?= $select_arr['user_name']?></option><?php
+                          }
+                        ?>
+                      </select>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-7 ">
-                        <p class="p-15">Showing 1 - 15 of 200</p>
-                      </div>
+                    <div class="form-group col-12 col-md-10 mx-auto">
+                      <label for="task">Select Task</label>
+                      <select style="color:gray;" class="form-control" name="task" id="task">
+                        <option  value="" selected disabled>SELECT YOUR PROJECT</option>
+                        <?php
+                          $select = mysqli_query($connection , "SELECT * FROM tasks");
+                          while ($select_arr = mysqli_fetch_assoc($select)) {
+                            ?>
+                            <option value="<?= $select_arr['id']?>"><?= $select_arr['task']?></option><?php
+                          }
+                        ?> 
+                      </select>
                     </div>
+                    <div class="form-group col-12 col-md-10 mx-auto">
+                      <label for="task_description" class="d-block">Task Description </label>
+                        <textarea style="border-color:#e4e6fc; width:100%; height:100px;" placeholder="Type Your Task's Description" name="task_description" id="task_description" ></textarea>
+                    </div>
+                    <!-- <div class="form-group col-12">
+                      <label for="user_password" class="d-block">User Password </label>
+                      <input type="password" name="user_password" class="form-control" id="">
+                    </div> -->
                   </div>
-                </div>
+                  <div class="form-group col-md-10 p-0 mx-auto">
+                    <button name="start_task" type="submit" class="btn btn-primary btn-lg btn-block">
+                      Assign Task 
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
+      
         <div class="settingSidebar">
           <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
           </a>
@@ -888,12 +553,14 @@
   <script src="assets/js/app.min.js"></script>
   <!-- JS Libraies -->
   <!-- Page Specific JS File -->
+  <script src="assets/js/page/portfolio.js"></script>
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <!-- Custom JS File -->
+  <script src="assets/js/jquery.js"></script>
   <script src="assets/js/custom.js"></script>
 </body>
 
 
-<!-- email-inbox.html  21 Nov 2019 03:50:58 GMT -->
+<!-- portfolio.html  21 Nov 2019 03:50:31 GMT -->
 </html>

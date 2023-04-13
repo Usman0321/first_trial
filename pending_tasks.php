@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include('connection.php'); ?>
 
-
-<!-- chat.html  21 Nov 2019 03:50:11 GMT -->
+<!-- blog.html  21 Nov 2019 03:50:31 GMT -->
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <div class="loader"></div>
+  <!-- <div class="loader"></div> -->
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -194,20 +194,13 @@
               </ul>
             </li>
             <li class="dropdown active">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>SofticEra Task_management</span></a>
               <ul class="dropdown-menu">
-                <li class="active"><a class="nav-link" href="chat.html">Chat</a></li>
-                <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                <li><a class="nav-link" href="calendar.html">Calendar</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="email-inbox.html">Inbox</a></li>
-                <li><a class="nav-link" href="email-compose.html">Compose</a></li>
-                <li><a class="nav-link" href="email-read.html">read</a></li>
+                <li><a class="nav-link" href="add_user.php">Add User</a></li>
+                <li><a class="nav-link" href="add_task.php">Add Task</a></li>
+                <li><a class="nav-link" href="pending_tasks.php">Pending Tasks</a></li>
+                <li><a class="nav-link" href="in_process_tasks.php">In Process Tasks</a></li>
+                <li><a class="nav-link" href="completed_tasks.php">Completed Tasks</a></li>
               </ul>
             </li>
             <li class="menu-header">UI Elements</li>
@@ -383,123 +376,49 @@
         </aside>
       </div>
       <!-- Main Content -->
+      <?php 
+        if(isset($_GET['start_id'])){
+          $start_id = $_GET['start_id'];
+          date_default_timezone_set("Asia/Karachi");  
+          $time =  date("h:ia" . " (d-M-Y)");            
+          $update_status = mysqli_query($connection , "UPDATE add_task SET task_status = 'in process' WHERE id = '$start_id'");  
+          $select_query = mysqli_query($connection , "SELECT `at`.id,`at`.user,u.user_name,`at`.task FROM add_task `at` JOIN users u ON `at`.user = u.user_id  WHERE `at`.id = $start_id");  
+          $select_arr = mysqli_fetch_assoc($select_query);
+          $user_name = $select_arr['user_name'];   $task = $select_arr['task'];
+          $insert_query = mysqli_query($connection , "INSERT INTO task_timing (user , task , task_start_time) VALUES ('$user_name' , '$task' , '$time')");  
+
+          // header("Location:in_process_tasks.php");
+          // exit();
+      }
+      ?>
       <div class="main-content">
         <section class="section">
           <div class="section-body">
             <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                <div class="card">
-                  <div class="body">
-                    <div id="plist" class="people-list">
-                      <div class="chat-search">
-                        <input type="text" class="form-control" placeholder="Search..." />
-                      </div>
-                      <div class="m-b-20">
-                        <div id="chat-scroll">
-                          <ul class="chat-list list-unstyled m-b-0">
-                            <li class="clearfix active">
-                              <img src="assets/img/users/user-4.png" alt="avatar">
-                              <div class="about">
-                                <div class="name">William Smith</div>
-                                <div class="status">
-                                  <i class="material-icons offline">fiber_manual_record</i>
-                                  left 7 mins ago </div>
-                              </div>
-                            </li>
-                            <li class="clearfix ">
-                              <img src="assets/img/users/user-1.png" alt="avatar">
-                              <div class="about">
-                                <div class="name">Martha Williams</div>
-                                <div class="status">
-                                  <i class="material-icons offline">fiber_manual_record</i>
-                                  online </div>
-                              </div>
-                            </li>
-                            <li class="clearfix">
-                              <img src="assets/img/users/user-2.png" alt="avatar">
-                              <div class="about">
-                                <div class="name">Joseph Clark</div>
-                                <div class="status">
-                                  <i class="material-icons online">fiber_manual_record</i>
-                                  online </div>
-                              </div>
-                            </li>
-                            <li class="clearfix">
-                              <img src="assets/img/users/user-3.png" alt="avatar">
-                              <div class="about">
-                                <div class="name">Nancy Taylor</div>
-                                <div class="status">
-                                  <i class="material-icons online">fiber_manual_record</i>
-                                  online </div>
-                              </div>
-                            </li>
-                            <li class="clearfix">
-                              <img src="assets/img/users/user-4.png" alt="avatar">
-                              <div class="about">
-                                <div class="name">Margaret Wilson</div>
-                                <div class="status">
-                                  <i class="material-icons online">fiber_manual_record</i>
-                                  online </div>
-                              </div>
-                            </li>
-                            <li class="clearfix">
-                              <img src="assets/img/users/user-5.png" alt="avatar">
-                              <div class="about">
-                                <div class="name">Joseph Jones</div>
-                                <div class="status">
-                                  <i class="material-icons offline">fiber_manual_record</i>
-                                  left 30 mins ago </div>
-                              </div>
-                            </li>
-                            <li class="clearfix">
-                              <img src="assets/img/users/user-1.png" alt="avatar">
-                              <div class="about">
-                                <div class="name">Jane Brown</div>
-                                <div class="status">
-                                  <i class="material-icons offline">fiber_manual_record</i>
-                                  left 10 hours ago </div>
-                              </div>
-                            </li>
-                            <li class="clearfix">
-                              <img src="assets/img/users/user-2.png" alt="avatar">
-                              <div class="about">
-                                <div class="name">Eliza Johnson</div>
-                                <div class="status">
-                                  <i class="material-icons online">fiber_manual_record</i>
-                                  online </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                <div class="card">
-                  <div class="chat">
-                    <div class="chat-header clearfix">
-                      <img src="assets/img/users/user-1.png" alt="avatar">
-                      <div class="chat-about">
-                        <div class="chat-with">Maria Smith</div>
-                        <div class="chat-num-messages">2 new messages</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="chat-box" id="mychatbox">
-                    <div class="card-body chat-content">
-                    </div>
-                    <div class="card-footer chat-form">
-                      <form id="chat-form">
-                        <input type="text" class="form-control" placeholder="Type a message">
-                        <button class="btn btn-primary">
-                          <i class="far fa-paper-plane"></i>
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+              <div class="col-12 table-responsive">
+                <table class="table">
+                  <tr>
+                    <th>Id</th>
+                    <th>User Name</th>
+                    <th>Task Name</th>
+                    <th>Assigh Date</th>
+                    <th>Start Task</th> 
+                  </tr>
+                  <?php
+                      $query = mysqli_query($connection , "SELECT `at`.id,u.user_name,t.task,`at`.task_assign_date  FROM add_task `at` JOIN users u ON at.user = u.user_id JOIN tasks t ON at.task = t.id WHERE `at`.task_status = 'pending'");
+                      while($query_arr = mysqli_fetch_array($query)){
+                  ?>
+                  <tr>
+                      <td><?= $query_arr['id']?></td>
+                      <td><?= $query_arr['user_name']?></td>
+                      <td class="text-truncate">
+                        <?= $query_arr['task']?>
+                      </td>
+                      <td> <?=$query_arr['task_assign_date']?></td>
+                      <td><a href="pending_tasks.php?start_id=<?=$query_arr['id']?>" name="start" class="btn btn-primary">Start Task</a></td>    
+                  </tr>
+                  <?php  } ?>
+                </table>
               </div>
             </div>
           </div>
@@ -609,13 +528,13 @@
   <script src="assets/js/app.min.js"></script>
   <!-- JS Libraies -->
   <!-- Page Specific JS File -->
-  <script src="assets/js/page/chat.js"></script>
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <!-- Custom JS File -->
+  <script src="assets/js/jquery.js"></script>
   <script src="assets/js/custom.js"></script>
 </body>
 
 
-<!-- chat.html  21 Nov 2019 03:50:12 GMT -->
+<!-- blog.html  21 Nov 2019 03:50:52 GMT -->
 </html>

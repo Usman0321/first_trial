@@ -24360,7 +24360,7 @@
         // The overall task is not in pipeline, and `ecModel.restoreData` only set pipeline tasks
         // dirty. If `getTargetSeries` of an overall task returns nothing, we should also ensure
         // that the overall task is set as dirty and to be performed, otherwise it probably cause
-        // state chaos. So we have to set dirty of all of the overall tasks manually, otherwise it
+        // state chaos. So we have to set dirty of all of the overPending Tasks manually, otherwise it
         // probably cause state chaos (consider `dataZoomProcessor`).
         this._stageTaskMap.each(function (taskRecord) {
             var overallTask = taskRecord.overallTask;
